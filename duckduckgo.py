@@ -12,14 +12,14 @@ from pathlib import Path
 import socket
 
 current_image_count = 0 # Declare current_image_count as a global variable
-def get_current_ip():
+def get_current_ip() -> None:
     try:
         hostname = socket.gethostname()
         ip_address = socket.gethostbyname(hostname)
         return ip_address
     except socket.error:
         return None
-def setup_logging():
+def setup_logging()-> None:
     name = datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
     if not os.path.exists("logs"):
         os.makedirs("logs")
@@ -39,7 +39,7 @@ def download_image(url: str, folder_name: str, num: int):
         with open(os.path.join(folder_name, f"{num}.jpg"), 'wb') as file:
             file.write(response.content)
 
-def search(driver, len_containers, num_images, folder_name):
+def search(driver, len_containers: int, num_images: int, folder_name: str):
     global current_image_count  # Access the global variable
     original_ip = get_current_ip()
     for i in range(1, len_containers + 1):
@@ -81,7 +81,7 @@ def search(driver, len_containers, num_images, folder_name):
         if current_image_count >= num_images:
             break
         
-def store_data_in_csv(file_path, current_image_count, imageURL):
+def store_data_in_csv(file_path: str, current_image_count: int, imageURL: str):
     with open(file_path, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([current_image_count, imageURL])
@@ -123,25 +123,16 @@ def download_images(query: str, num_images: int, size_filter: str):
         containers = pageSoup.findAll('div', {'class': "tile--img__media"})
         len_containers = len(containers)
         search(driver, len_containers, num_images, folder_name)
-        # while current_image_count < num_images - 1:
-        #     print(current_image_count)
-        #     xPath = f"""//*[@id="islrg"]/div[1]/div[51]/div[{100}]"""
-        #     driver.find_element(By.XPATH, xPath).click()
-        #     search(driver, len_containers, num_images, folder_name)
 
     driver.quit()
     return images
 
-if __name__ == "__main__":
-    setup_logging()
-    folder_name = 'images'
-    csv_file = os.path.join(folder_name, "image_data.csv")
-    create_csv(csv_file)
-    query = input("Enter the search query: ")
-    num_images = int(input("Enter the number of images to download: "))
-    size_filter = input("Enter the size filter (e.g., 'Large', 'Medium', 'Small', 'Wallpaper'): ")
 
-    downloaded_images = download_images(query, num_images, size_filter)
-    for i, imageURL in enumerate(downloaded_images, start=current_image_count):
-        store_data_in_csv(csv_file, i , imageURL)
-    print(f"Downloaded {len(downloaded_images)} images.")
+    # setup_logging()
+# folder_name = 'images'
+# csv_file = os.path.join(folder_name, "image_data.csv")
+# create_csv(csv_file)
+# downloaded_images = download_images(query, num_images, size_filter)
+# for i, imageURL in enumerate(downloaded_images, start=current_image_count):
+#     store_data_in_csv(csv_file, i , imageURL)
+# print(f"Downloaded {len(downloaded_images)} images.")

@@ -86,8 +86,12 @@ class Bing:
                 return "+filterui:photo-animatedgif"
             elif shorthand == "transparent":
                 return "+filterui:photo-transparent"
-            elif shorthand == "Large" :
+            elif shorthand == "Large" or "large":
                 return "+filterui:imagesize-large"
+            elif shorthand == "Short" or "short":
+                return "+filterui:imagesize-short"
+            elif shorthand == "Medium" or "medium":
+                return "+filterui:imagesize-medium"
             else:
                 return ""
     def save_image(self, link: str, file_path: str):
@@ -175,7 +179,7 @@ class Bing:
 
             for i in range(1, len(links)):
                 link = links[i]
-                if self.download_count < self.limit and link not in self.seen:
+                if self.download_count < self.limit + 1 and link not in self.seen:
                     self.seen.add(link)
                     self.download_image(link)
                     self.log_image_data(link)

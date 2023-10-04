@@ -1,0 +1,6 @@
+images
+logs
+*.csv
+*.txt
+dataset
+__pycache__

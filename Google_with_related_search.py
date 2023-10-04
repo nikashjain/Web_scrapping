@@ -22,14 +22,14 @@ def get_current_ip():
     except socket.error:
         return None
 
-def download_image(url: str, folder_name: str, num: int):
+def download_image(url: str, folder_name: str, num: int, num_images:int):
     # Write image to file
     response = requests.get(url)
     if response.status_code == 200:
         with open(os.path.join(folder_name, f"{num}.jpg"), 'wb') as file:
             file.write(response.content)
-    logging.info(f"Downloaded element {num} out of {num_images}. URL: {url}")
-    csv_writer.writerow([num, url])
+        logging.info(f"Downloaded element {num} out of {num_images}. URL: {url}")
+        csv_writer.writerow([num, url])
 
 def search(driver, len_containers, num_images, folder_name):
     global current_image_count  # Access the global variable
@@ -80,11 +80,12 @@ def search(driver, len_containers, num_images, folder_name):
                 driver.quit()
                 return images
             current_image_count += 1  # Increment the global current_image_count
-            download_image(imageURL, folder_name, current_image_count)
+            download_image(imageURL, folder_name, current_image_count,num_images)
             images.append(os.path.join(folder_name, f"{current_image_count + 1}.jpg"))
             print(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
         except:
-            print(f"Couldn't download an image {current_image_count}, continuing downloading the next one")
+            print(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
+            # print(f"Couldn't download an image {current_image_count}, continuing downloading the next one")
 
         if i >= 50:
             b += 1
@@ -93,7 +94,7 @@ def search(driver, len_containers, num_images, folder_name):
         if current_image_count >= num_images:
             break
 
-def download_images(query: str, num_images: int, size_filter: str):
+def download_images_google(query: str, num_images: int, size_filter: str):
     global images
     global current_image_count  # Access the global variable
     images = []
@@ -136,5 +137,6 @@ def download_images(query: str, num_images: int, size_filter: str):
 #     num_images = int(input("Enter the number of images to download: "))
 #     size_filter = input("Enter the size filter (e.g., 'large', 'medium', 'icon'): ")
 
-#     downloaded_images = download_images(query, num_images, size_filter)
+#     downloaded_images = download_images_google
+#(query, num_images, size_filter)
 #     print(f"Downloaded {len(downloaded_images)} images.")
