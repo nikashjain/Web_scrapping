@@ -1,7 +1,10 @@
 Python code to download bulk images form Bing, Google and duckduckgo.
 
+```bash
+pip install -r requirements.txt 
+```
 Usage:
-Run main.py and Select the required Browser
+Run ```python main.py``` Select the required Browser
 
 Usage for Bing.py
 
