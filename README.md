@@ -6,6 +6,8 @@ pip install -r requirements.txt
 Usage:
 Run ```python main.py``` Select the required Browser
 
+Install chromedriver by visiting "https://chromedriver.chromium.org/downloads" ,based on your google chrome version.
+
 Usage for Bing.py
 
 `query` : String to be searched.

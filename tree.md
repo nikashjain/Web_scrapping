@@ -11,11 +11,34 @@
 |   |   |-- Image_5.jpeg
 |   |   |-- Image_6.jpg
 |   |   `-- image_data.csv
+|   |-- car
+|   |   |-- Image_1.jpg
+|   |   |-- Image_2.jpg
+|   |   |-- Image_3.jpg
+|   |   `-- image_data.csv
+|   |-- drone
+|   |   |-- Image_1.jpg
+|   |   |-- Image_2.jpg
+|   |   `-- image_data.csv
 |   |-- flight
 |   |   |-- Image_1.jpg
 |   |   |-- Image_2.jpg
 |   |   |-- Image_3.jpg
 |   |   |-- Image_4.jpg
+|   |   `-- image_data.csv
+|   |-- query
+|   |   |-- Image_1.png
+|   |   |-- Image_2.png
+|   |   |-- Image_3.png
+|   |   |-- Image_4.png
+|   |   |-- Image_5.png
+|   |   |-- Image_6.png
+|   |   |-- Image_7.png
+|   |   |-- Image_8.png
+|   |   `-- image_data.csv
+|   |-- somethin
+|   |   |-- Image_1.jpg
+|   |   |-- Image_2.jpg
 |   |   `-- image_data.csv
 |   `-- test
 |       |-- Image_1.jpg
@@ -28,10 +51,123 @@
 |-- duckduckgo.py
 |-- images
 |   |-- 1.jpg
+|   |-- 10.jpg
+|   |-- 100.jpg
+|   |-- 101.jpg
+|   |-- 102.jpg
+|   |-- 104.jpg
+|   |-- 105.jpg
+|   |-- 106.jpg
+|   |-- 109.jpg
+|   |-- 11.jpg
+|   |-- 110.jpg
+|   |-- 112.jpg
+|   |-- 113.jpg
+|   |-- 116.jpg
+|   |-- 117.jpg
+|   |-- 118.jpg
+|   |-- 119.jpg
+|   |-- 12.jpg
+|   |-- 120.jpg
+|   |-- 122.jpg
+|   |-- 123.jpg
+|   |-- 124.jpg
+|   |-- 125.jpg
+|   |-- 13.jpg
+|   |-- 14.jpg
+|   |-- 15.jpg
+|   |-- 16.jpg
+|   |-- 17.jpg
+|   |-- 18.jpg
+|   |-- 19.jpg
 |   |-- 2.jpg
+|   |-- 20.jpg
+|   |-- 21.jpg
+|   |-- 22.jpg
+|   |-- 23.jpg
+|   |-- 24.jpg
+|   |-- 25.jpg
+|   |-- 26.jpg
+|   |-- 27.jpg
+|   |-- 28.jpg
+|   |-- 29.jpg
 |   |-- 3.jpg
+|   |-- 30.jpg
+|   |-- 31.jpg
+|   |-- 32.jpg
+|   |-- 33.jpg
+|   |-- 34.jpg
+|   |-- 35.jpg
+|   |-- 36.jpg
+|   |-- 37.jpg
+|   |-- 38.jpg
+|   |-- 39.jpg
 |   |-- 4.jpg
+|   |-- 40.jpg
+|   |-- 41.jpg
+|   |-- 42.jpg
+|   |-- 43.jpg
+|   |-- 44.jpg
+|   |-- 45.jpg
+|   |-- 46.jpg
+|   |-- 47.jpg
+|   |-- 48.jpg
+|   |-- 49.jpg
 |   |-- 5.jpg
+|   |-- 50.jpg
+|   |-- 51.jpg
+|   |-- 52.jpg
+|   |-- 53.jpg
+|   |-- 54.jpg
+|   |-- 55.jpg
+|   |-- 56.jpg
+|   |-- 57.jpg
+|   |-- 58.jpg
+|   |-- 59.jpg
+|   |-- 6.jpg
+|   |-- 60.jpg
+|   |-- 61.jpg
+|   |-- 62.jpg
+|   |-- 63.jpg
+|   |-- 64.jpg
+|   |-- 65.jpg
+|   |-- 66.jpg
+|   |-- 67.jpg
+|   |-- 68.jpg
+|   |-- 69.jpg
+|   |-- 7.jpg
+|   |-- 70.jpg
+|   |-- 71.jpg
+|   |-- 72.jpg
+|   |-- 73.jpg
+|   |-- 74.jpg
+|   |-- 75.jpg
+|   |-- 76.jpg
+|   |-- 77.jpg
+|   |-- 78.jpg
+|   |-- 79.jpg
+|   |-- 8.jpg
+|   |-- 80.jpg
+|   |-- 81.jpg
+|   |-- 82.jpg
+|   |-- 83.jpg
+|   |-- 84.jpg
+|   |-- 85.jpg
+|   |-- 86.jpg
+|   |-- 87.jpg
+|   |-- 88.jpg
+|   |-- 89.jpg
+|   |-- 9.jpg
+|   |-- 90.jpg
+|   |-- 91.jpg
+|   |-- 92.jpg
+|   |-- 93.jpg
+|   |-- 94.jpg
+|   |-- 95.jpg
+|   |-- 96.jpg
+|   |-- 97.jpg
+|   |-- 98.jpg
+|   |-- 99.jpg
 |   |-- Cars
 |   |   |-- 0.jpg
 |   |   |-- 1.jpg
@@ -46,6 +182,10 @@
 |   |   |-- 4.jpg
 |   |   `-- 5.jpg
 |   |-- Fuel
+|   |   |-- 0.jpg
+|   |   |-- 1.jpg
+|   |   `-- image_data.csv
+|   |-- car
 |   |   |-- 0.jpg
 |   |   |-- 1.jpg
 |   |   `-- image_data.csv
@@ -66,6 +206,14 @@
 |-- images_info.csv
 |-- images_info.txt
 |-- logs
+|   |-- 2023-10-0416_43_28.log
+|   |-- 2023-10-0416_52_23.log
+|   |-- 2023-10-0417_00_46.log
+|   |-- 2023-10-0417_05_05.log
+|   |-- 2023-10-0417_19_28.log
+|   |-- 2023-10-0417_19_50.log
+|   |-- 2023-10-0417_28_59.log
+|   `-- 2023-10-0417_36_20.log
 |-- main.py
 |-- requirements.txt
 |-- scripts
@@ -75,4 +223,4 @@
 |   `-- pull.sh
 `-- tree.md
 
-12 directories, 63 files
+17 directories, 206 files
