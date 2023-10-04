@@ -1,6 +1,6 @@
 images
 logs
 *.csv
-*.txt
+images_info.txt
 dataset
 __pycache__
