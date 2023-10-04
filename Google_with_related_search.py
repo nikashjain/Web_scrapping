@@ -125,7 +125,7 @@ def download_images_google(query: str, num_images: int, size_filter: str):
     while current_image_count < num_images:
         search_URL = f"https://www.google.com/search?q={query}&tbm=isch&tbs=isz:{size_filter}&start={page * 200}"
         driver.get(search_URL)
-        a = input("scroll down and press enter in terminal: ")
+        # a = input("scroll down and press enter in terminal: ")
         while True:
             current_height = driver.execute_script("return document.body.scrollHeight")
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
