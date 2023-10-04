@@ -27,10 +27,6 @@ def setup_logging()-> None:
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[logging.FileHandler(os.path.join("logs", f"{name}.log"), mode="w",)])
-def create_csv(folder_name):
-    with open(folder_name, "w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["Image Count", "Image URL"])
 
 def download_image(url: str, folder_name: str, num: int):
     # Write image to file
@@ -76,15 +72,30 @@ def search(driver, len_containers: int, num_images: int, folder_name: str):
             current_image_count += 1
             print(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
             logging.info(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
+            log_image_data(imageURL, folder_name)
         except:
             print(f"Couldn't download an image {current_image_count}, continuing downloading the next one")
         if current_image_count >= num_images:
             break
-        
-def store_data_in_csv(file_path: str, current_image_count: int, imageURL: str):
-    with open(file_path, "a", newline="") as file:
+
+def write_csv(imageURL: dict, download_count: int) -> None:
+    """
+    Writes a dictionary of data to a CSV file.
+    """
+    with open("image_data.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([download_count, imageURL])
+        for row in writer:
+            print(row)
+def log_image_data(imageURL, folder_name):
+    """
+    Logs image data to the CSV file.
+    """
+    csv_file = os.path.join(folder_name, "image_data.csv")
+    with open(csv_file, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([current_image_count, imageURL])
+        
 
 def download_images(query: str, num_images: int, size_filter: str):
     global images
@@ -126,13 +137,3 @@ def download_images(query: str, num_images: int, size_filter: str):
 
     driver.quit()
     return images
-
-
-    # setup_logging()
-# folder_name = 'images'
-# csv_file = os.path.join(folder_name, "image_data.csv")
-# create_csv(csv_file)
-# downloaded_images = download_images(query, num_images, size_filter)
-# for i, imageURL in enumerate(downloaded_images, start=current_image_count):
-#     store_data_in_csv(csv_file, i , imageURL)
-# print(f"Downloaded {len(downloaded_images)} images.")

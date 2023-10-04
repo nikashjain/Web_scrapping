@@ -11,9 +11,7 @@ import csv
 
 current_image_count = 0
 logging.basicConfig(filename='images_info.txt', level=logging.INFO, format='%(asctime)s - %(message)s')
-csv_file = open('images_info.csv', 'w', newline='')
-csv_writer = csv.writer(csv_file)
-csv_writer.writerow(['Image Number', 'URL']) 
+
 def get_current_ip():
     try:
         hostname = socket.gethostname()
@@ -29,7 +27,6 @@ def download_image(url: str, folder_name: str, num: int, num_images:int):
         with open(os.path.join(folder_name, f"{num}.jpg"), 'wb') as file:
             file.write(response.content)
         logging.info(f"Downloaded element {num} out of {num_images}. URL: {url}")
-        csv_writer.writerow([num, url])
 
 def search(driver, len_containers, num_images, folder_name):
     global current_image_count  # Access the global variable
@@ -83,8 +80,10 @@ def search(driver, len_containers, num_images, folder_name):
             download_image(imageURL, folder_name, current_image_count,num_images)
             images.append(os.path.join(folder_name, f"{current_image_count + 1}.jpg"))
             print(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
+            log_image_data(imageURL, folder_name)
         except:
             print(f"Downloaded element {current_image_count} out of {num_images}. URL: {imageURL}")
+            log_image_data(imageURL, folder_name)
             # print(f"Couldn't download an image {current_image_count}, continuing downloading the next one")
 
         if i >= 50:
@@ -93,6 +92,23 @@ def search(driver, len_containers, num_images, folder_name):
             c += 1
         if current_image_count >= num_images:
             break
+def write_csv(imageURL: dict, download_count: int) -> None:
+    """
+    Writes a dictionary of data to a CSV file.
+    """
+    with open("image_data.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([download_count, imageURL])
+        for row in writer:
+            print(row)
+def log_image_data(imageURL, folder_name):
+    """
+    Logs image data to the CSV file.
+    """
+    csv_file = os.path.join(folder_name, "image_data.csv")
+    with open(csv_file, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([current_image_count, imageURL])
 
 def download_images_google(query: str, num_images: int, size_filter: str):
     global images
@@ -131,12 +147,3 @@ def download_images_google(query: str, num_images: int, size_filter: str):
 
     driver.quit()
     return images
-
-# if __name__ == "__main__":
-#     query = input("Enter the search query: ")
-#     num_images = int(input("Enter the number of images to download: "))
-#     size_filter = input("Enter the size filter (e.g., 'large', 'medium', 'icon'): ")
-
-#     downloaded_images = download_images_google
-#(query, num_images, size_filter)
-#     print(f"Downloaded {len(downloaded_images)} images.")

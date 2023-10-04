@@ -1,9 +1,9 @@
 from downloader import download
 from Google_with_related_search import download_images_google
 from duckduckgo import download_images
-from duckduckgo import store_data_in_csv
-from duckduckgo import create_csv
-from duckduckgo import current_image_count
+# from duckduckgo import store_data_in_csv
+# from duckduckgo import create_csv
+# from duckduckgo import current_image_count
 import os
 import logging
 import csv
@@ -36,13 +36,13 @@ elif choice == "3":
     query = input("Enter the search query: ")
     num_images = int(input("Enter the number of images to download: "))
     size_filter = input("Enter the size filter (e.g., 'Large', 'Medium', 'Small', 'Wallpaper'): ")
-    folder_name = 'images'
-    csv_file = os.path.join(folder_name, "image_data.csv")
-    create_csv(csv_file)
+    # folder_name = 'images'
+    # csv_file = os.path.join(folder_name, "image_data.csv")
+    # create_csv(csv_file)
     downloaded_images = download_images(query, num_images, size_filter)
-    for i, imageURL in enumerate(downloaded_images, start=current_image_count):
-        store_data_in_csv(csv_file, i , imageURL)
-    print(f"Downloaded {len(downloaded_images)} images.")
+    # for i, imageURL in enumerate(downloaded_images, start=current_image_count):
+    #     store_data_in_csv(csv_file, i , imageURL)
+    # print(f"Downloaded {len(downloaded_images)} images.")
 
 else:
-    print("Invalid choice. Please choose a valid option (1/2/3/4/5).") 
+    print("Invalid choice. Please choose a valid option (1/2/3/4).")
